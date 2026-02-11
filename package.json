@@ -1,0 +1,29 @@
+{
+  "name": "claude-memory-docs",
+  "version": "1.0.0",
+  "description": "Claude Code learning documentation with automated CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "lint": "markdownlint '**/*.md' --config .markdownlint.json",
+    "spell": "cspell '**/*.md' --config .cspell.json",
+    "validate-links": "node scripts/validate-links.js",
+    "update-index": "node scripts/update-index.js",
+    "check-structure": "bash scripts/check-structure.sh",
+    "test": "npm run lint && npm run spell && npm run validate-links && npm run check-structure",
+    "format": "prettier --write '**/*.md'",
+    "format:check": "prettier --check '**/*.md'"
+  },
+  "keywords": [
+    "claude",
+    "documentation",
+    "ci-cd",
+    "automation"
+  ],
+  "author": "Claude Code",
+  "license": "MIT",
+  "devDependencies": {
+    "cspell": "^8.3.0",
+    "markdownlint-cli": "^0.39.0",
+    "prettier": "^3.2.4"
+  }
+}

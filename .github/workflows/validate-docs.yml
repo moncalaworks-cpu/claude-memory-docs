@@ -1,0 +1,74 @@
+name: Validate Docs
+
+on:
+  push:
+    branches: [main, develop]
+    paths: ['**/*.md']
+  pull_request:
+    branches: [main]
+    paths: ['**/*.md']
+
+jobs:
+  lint-markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli2
+
+      - name: Lint markdown files
+        run: |
+          markdownlint-cli2 '**/*.md' --config .markdownlint.json 2>&1 || exit 1
+        working-directory: ${{ github.workspace }}
+
+  validate-links:
+    name: Validate Internal Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ github.workspace }}
+
+      - name: Validate links
+        run: node scripts/validate-links.js
+        working-directory: ${{ github.workspace }}
+
+  check-structure:
+    name: Check Repository Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check structure
+        run: bash scripts/check-structure.sh
+        working-directory: ${{ github.workspace }}
+
+  summary:
+    name: Validation Summary
+    runs-on: ubuntu-latest
+    needs: [lint-markdown, validate-links, check-structure]
+    if: always()
+    steps:
+      - name: Check if all checks passed
+        run: |
+          if [[ "${{ needs.lint-markdown.result }}" == "failure" ||
+                "${{ needs.validate-links.result }}" == "failure" ||
+                "${{ needs.check-structure.result }}" == "failure" ]]; then
+            echo "❌ Some validation checks failed"
+            exit 1
+          fi
+          echo "✅ All validation checks passed"

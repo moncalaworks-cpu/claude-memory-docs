@@ -232,6 +232,32 @@ A production-grade Claude Code plugin demonstrating:
 - Includes Claude Code attribution
 - Avoids committing secrets files
 
+
+## File Inventory (Auto-generated)
+
+Last updated: 2026-02-11T23:23:13.840Z
+
+| File | Lines | Size | Last Modified |
+| --- | --- | --- | --- |
+| agents.md | 192 | 5.1 KB | 2026-02-11 |
+| claude-features-summary.md | 631 | 18.9 KB | 2026-02-11 |
+| coordinator-agent-test-results.md | 335 | 10.2 KB | 2026-02-11 |
+| debugging.md | 132 | 4.4 KB | 2026-02-11 |
+| examples.md | 237 | 5.9 KB | 2026-02-11 |
+| extended-thinking-vision-guide.md | 293 | 9.6 KB | 2026-02-11 |
+| hooks-guide.md | 471 | 11.4 KB | 2026-02-11 |
+| image-analysis-example.md | 126 | 4.3 KB | 2026-02-11 |
+| JOURNEY.md | 679 | 18.2 KB | 2026-02-11 |
+| lesson-plan.md | 325 | 10.0 KB | 2026-02-11 |
+| mcps.md | 349 | 6.6 KB | 2026-02-11 |
+| orchestration-patterns.md | 425 | 11.1 KB | 2026-02-11 |
+| patterns.md | 80 | 2.8 KB | 2026-02-10 |
+| plugin-template.md | 504 | 10.7 KB | 2026-02-11 |
+| plugins.md | 423 | 9.9 KB | 2026-02-11 |
+| README.md | 168 | 5.7 KB | 2026-02-11 |
+| workflows.md | 609 | 11.8 KB | 2026-02-11 |
+**Total**: 17 files, 5979 lines, 156.6 KB
+
 ---
 
 ## Phase 2 Key Learnings: Extended Thinking & Vision

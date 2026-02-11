@@ -1,0 +1,53 @@
+name: Auto-Index Update
+
+on:
+  push:
+    branches: [main]
+    paths: ['**/*.md']
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    name: Update File Inventory
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ github.workspace }}
+
+      - name: Update file inventory
+        run: node scripts/update-index.js
+        working-directory: ${{ github.workspace }}
+
+      - name: Check if MEMORY.md changed
+        id: changed
+        run: |
+          if git diff --quiet MEMORY.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+        working-directory: ${{ github.workspace }}
+
+      - name: Commit and push changes
+        if: steps.changed.outputs.changed == 'true'
+        run: |
+          git config user.name "Claude Code Bot"
+          git config user.email "claude-code@anthropic.com"
+          git add MEMORY.md
+          git commit -m "docs: auto-update MEMORY.md file inventory [skip ci]"
+          git push
+        working-directory: ${{ github.workspace }}
+
+      - name: No changes needed
+        if: steps.changed.outputs.changed == 'false'
+        run: echo "✅ File inventory is up to date"
