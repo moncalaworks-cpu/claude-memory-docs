@@ -48,7 +48,7 @@ A complete CI/CD automation framework for the memory documentation repository wi
 - **Purpose**: Find broken markdown links
 - **Features**:
   - Scans all .md files recursively
-  - Extracts `[text](file.md)` style links
+  - Extracts markdown link references with bracket/parenthesis syntax
   - Verifies target files exist
   - Skips external links (http://, #anchors)
   - Detailed error reporting
