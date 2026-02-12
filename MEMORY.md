@@ -13,6 +13,13 @@ Learn the best way to use Claude, specifically: skills, agents, plugins, MCPs, a
 - ✅ Include "Co-Authored-By: Claude Haiku 4.5" in commits
 - ✅ Use descriptive commit messages explaining the "why"
 
+**Team Communication** (2026-02-11):
+
+- ✅ **Standard for all repos**: Set up GitHub-Slack integration for PR notifications
+- ✅ Use `/github subscribe owner/repo pulls reviews` in team channels
+- ✅ One-time setup in Slack workspace, then configure per-repo
+- ✅ See [slack-integration.md](slack-integration.md) for complete guide
+
 ## Claude Features Overview
 
 ### Skills
@@ -48,6 +55,7 @@ Learn the best way to use Claude, specifically: skills, agents, plugins, MCPs, a
 
 - See: [claude-features-summary.md](claude-features-summary.md) - **📋 COMPREHENSIVE OVERVIEW of all Claude features covered so far** ← START HERE!
 - See: [lesson-plan.md](lesson-plan.md) - **📚 Strategic curriculum & learning path**
+- See: [slack-integration.md](slack-integration.md) - **📢 GitHub-Slack integration for team notifications** ✅ STANDARD FOR ALL REPOS (2026-02-11)
 - See: [plugin-template.md](plugin-template.md) - **📋 Reusable plugin structure template** (established 2026-02-11)
 - See: [image-analysis-example.md](image-analysis-example.md) - **🖼️ Real-world vision capability demo: Database schema analysis** ✅ TESTED
 - See: [coordinator-agent-test-results.md](coordinator-agent-test-results.md) - **🎯 Coordinator agent validation: 4-phase security audit** ✅ VALIDATED 2026-02-11
@@ -108,14 +116,16 @@ This memory directory persists across Claude Code sessions. As you learn:
   - ✅ 3 validation workflows (markdownlint, cspell, custom scripts)
   - ✅ All checks passing on GitHub Actions
   - ✅ Phase 4A complete and documented
-- **Phase 4B**: Headless Claude Code Integration ← ✅ COMPLETE & LIVE (2026-02-11)
+- **Phase 4B**: Headless Claude Code Integration ← ✅ COMPLETE (Disabled for Costs)
   - ✅ 4 AI-powered workflows: PR review, docs sync, architecture analysis, plugin testing
+  - ✅ All workflows switched to manual trigger only (workflow_dispatch)
+  - ✅ Zero automatic API usage - cost-effective reference implementation
   - ✅ Authentication setup guide and implementation
   - ✅ Cost management strategy: $50/month budget with per-workflow limits
   - ✅ HEADLESS-GUIDE.md: Complete user guide for headless Claude
   - ✅ phase4b-implementation.md: Architecture and patterns documented
   - ✅ Fixed hook pattern bug (blocking .github/ false positive)
-  - ✅ Ready for production deployment
+  - 📝 Status: Available as reference, can re-enable by uncommenting triggers
 - **Phase 4C** (Next): Plugin CI/CD Templates ← QUEUED
 - **Phase 5** (Backlog): Advanced Features
 
